@@ -1,0 +1,22 @@
+name: selection-benchmarks
+
+services:
+    selection-benchmarks-postgres:
+        image: postgres:16.2
+        environment:
+            POSTGRES_USER: selection_benchmarks
+            POSTGRES_PASSWORD: selection_benchmarks
+            POSTGRES_DB: selection_benchmarks
+        networks: [selection-benchmarks]
+        ports: [5432:5432]
+        volumes:
+            - type: volume
+              source: postgres-data
+              target: /var/lib/postgresql/data
+
+networks:
+    selection-benchmarks:
+        name: selection-benchmarks
+
+volumes:
+    postgres-data:

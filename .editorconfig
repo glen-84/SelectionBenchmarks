@@ -1,0 +1,61 @@
+# https://editorconfig.org/
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+# https://github.com/dotnet/roslyn/issues/41640
+dotnet_diagnostic.IDE0005.severity = suggestion
+
+# https://youtrack.jetbrains.com/issue/RIDER-87122
+dotnet_naming_style.camel_case.capitalization = camel_case
+dotnet_naming_style.camel_case.required_prefix =
+
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+dotnet_naming_style.pascal_case_interface.capitalization = pascal_case
+dotnet_naming_style.pascal_case_interface.required_prefix = I
+
+# Default.
+dotnet_naming_symbols.default_symbols.applicable_kinds = class, enum, event, method, property, struct
+
+dotnet_naming_rule.default_rule.severity = warning
+dotnet_naming_rule.default_rule.style = pascal_case
+dotnet_naming_rule.default_rule.symbols = default_symbols
+
+# Interfaces.
+dotnet_naming_symbols.interface_symbols.applicable_kinds = interface
+
+dotnet_naming_rule.interfaces_rule.severity = warning
+dotnet_naming_rule.interfaces_rule.style = pascal_case_interface
+dotnet_naming_rule.interfaces_rule.symbols = interface_symbols
+
+# Private instance fields.
+dotnet_naming_symbols.private_instance_fields_symbols.applicable_accessibilities = private
+dotnet_naming_symbols.private_instance_fields_symbols.applicable_kinds = field
+
+dotnet_naming_rule.private_instance_fields_rule.severity = warning
+dotnet_naming_rule.private_instance_fields_rule.style = camel_case
+dotnet_naming_rule.private_instance_fields_rule.symbols = private_instance_fields_symbols
+
+# Private static fields.
+dotnet_naming_symbols.private_static_fields_symbols.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_fields_symbols.applicable_kinds = field
+dotnet_naming_symbols.private_static_fields_symbols.required_modifiers = static
+
+dotnet_naming_rule.private_static_fields_rule.severity = warning
+dotnet_naming_rule.private_static_fields_rule.style = pascal_case
+dotnet_naming_rule.private_static_fields_rule.symbols = private_static_fields_symbols
+
+resharper_arrange_this_qualifier_highlighting = do_not_show
+# --
+
+[*.{csproj,props}]
+indent_size = 2 # https://github.com/dotnet/templating/issues/5505
